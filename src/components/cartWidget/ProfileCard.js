@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./ProfileCard.css"
 
 
-function ProfileCard({ titulo, cat, img}) {
+function ProfileCard({ titulo, cat, img }) {
 
     const [count, setCount] = useState(0);
 
@@ -17,7 +17,38 @@ function ProfileCard({ titulo, cat, img}) {
     }
 
     return (
-        <div className="card">
+        < div className = "card mb-3 detailcard" >
+        <div className="row g-0">
+            <div className="col-md-4">
+                <img src={img} className="img-fluid rounded-start" alt={titulo}/>
+            </div>
+            <div className="col-md-8 cardtext">
+                <div className="card-body">
+                    <h5 className="card-title"> {titulo} </h5>
+                    <p className="card-text">{cat} </p>
+                </div>
+                <div className="card-body botones">
+                    <button onClick={handleClickSuma} className="button">
+                        <p>+</p>
+                    </button>
+                    <button onClick={handleClickResta} className="button">
+                        <p>-</p>
+                    </button>
+                </div>
+                <div>
+                    <span> <p> Gramos: {count} </p> </span>
+                </div>
+            </div>
+        </div>
+        </div>
+    )
+}
+export default ProfileCard
+
+    
+
+/*
+<div className="card">
             <div className="card-img">
                 <figure  className="cardimg">
                     <img src={img} alt="Genética" />
@@ -51,6 +82,4 @@ function ProfileCard({ titulo, cat, img}) {
 
 
         </div>
-    )
-}
-export default ProfileCard
+        */

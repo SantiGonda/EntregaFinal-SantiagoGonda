@@ -2,8 +2,8 @@ import Item from "../Item/Item";
 
 function ItemList({geneticas}){
     return(
-        <div>
-            {geneticas.map(gen => <Item key={gen.id} {...gen}/>)}
+        <div className="card-group carta">
+            {geneticas.map(gen => <Item key={gen.id} {...gen} />)}
         </div>
     )
 }

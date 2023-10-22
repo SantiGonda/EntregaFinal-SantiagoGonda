@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "GREENSHEEP";
+    src: url(./../fonts/A\ Love\ of\ Thunder.ttf);
+  }
+
+.titulo{
+    font-family: "GREENSHEEP";
+}
+
+.geneticas {
+    background-image: url("./img/ChalasNyB.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  .imgcard{
+    width: 50px;
+  }
+
+  .carta{
+    margin: 10px;
+  }
+
+  .card{
+    margin: 10px;
+  }

@@ -1,8 +1,8 @@
-
 import { useState , useEffect } from "react";
 import {getProducts, getProductsByCategory} from "../../Data";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import "./ItemListContainer.css"
 
 function ItemListContainer({greeting}) {
 
@@ -26,11 +26,11 @@ useEffect(() => {
 },[categoryId])
 
     return (
-        <div>
-            <h1> {greeting} </h1>
+        <div className="geneticas">
+            <h1 className="text-center titulo text-white"> {greeting} </h1>
             <ItemList geneticas= {geneticas} />
         </div>
     )
 }
 
-export default ItemListContainer
+export default ItemListContainer;

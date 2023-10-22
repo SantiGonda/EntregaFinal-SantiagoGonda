@@ -5,27 +5,27 @@ import ProfileCard from "./../cartWidget/ProfileCard"
 
 
 
-function ItemDetailContainer () {
+function ItemDetailContainer() {
 
     const [product, setProduct] = useState(null);
 
     const { itemId } = useParams();
     console.log("El item iD QUE llega es: ", itemId);
-    useEffect(()=>{
+    useEffect(() => {
         getProductById(itemId)
-        .then(response => {
-            setProduct(response);
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(response => {
+                setProduct(response);
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
-    ,[itemId])
+        , [itemId])
 
-    return(
+    return (
         <div className="ItemDetailContainer">
-
-            <ProfileCard {...product}/>
+            <h1 className="tituloele">Genética</h1>
+            <ProfileCard {...product} />
         </div>
     )
 
