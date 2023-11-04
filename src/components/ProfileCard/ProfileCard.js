@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./ProfileCard.css"
+import { NavLink } from "react-router-dom";
+import { CartContext } from "../../contex/CartContext";
 
 
-function ProfileCard({ titulo, cat, img }) {
+function ProfileCard({id, titulo, cat, precio, img }) {
 
     const [count, setCount] = useState(0);
 
+    const {addItem} = useContext(CartContext)
+
     function handleClickSuma() {
-        setCount(count + 1);
+        setCount(count + 1)
+    }
+
+    function agregoCarrito() {
+        const item = {id, titulo, cat, precio, count, img}
+        addItem(item)
     }
 
     function handleClickResta() {
@@ -25,7 +34,7 @@ function ProfileCard({ titulo, cat, img }) {
             <div className="col-md-8 cardtext">
                 <div className="card-body">
                     <h5 className="card-title"> {titulo} </h5>
-                    <p className="card-text">{cat} </p>
+                    <p className="card-text">{cat} - ${precio}/g </p>
                 </div>
                 <div className="card-body botones">
                     <button onClick={handleClickSuma} className="button">
@@ -34,11 +43,18 @@ function ProfileCard({ titulo, cat, img }) {
                     <button onClick={handleClickResta} className="button">
                         <p>-</p>
                     </button>
+                    <button onClick={agregoCarrito} className="button">
+                        <p>Agregar al carrito</p>
+                    </button>
                 </div>
                 <div>
-                    <span> <p> Gramos: {count} </p> </span>
+                    <span className="textoGreen"> <p> Gramos: {count} </p> </span>
                 </div>
             </div>
+        </div>
+        <div className="links">
+        <NavLink to={'/geneticas'} className="link" >VOLVER</NavLink>
+        <NavLink to={'/cart'} className="link" >COMPRAR</NavLink>
         </div>
         </div>
     )

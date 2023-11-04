@@ -1,33 +1,45 @@
 import { useState, useEffect } from "react";
-import { getProductById } from "../../Data";
 import { useParams } from "react-router-dom";
-import ProfileCard from "./../cartWidget/ProfileCard"
-
+import ProfileCard from "../ProfileCard/ProfileCard"
+import { getDoc, doc } from "firebase/firestore"
+import { db } from "./../../config/Firebase"
 
 
 function ItemDetailContainer() {
 
     const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true)
+    console.log(loading)
 
     const { itemId } = useParams();
-    console.log("El item iD QUE llega es: ", itemId);
+
     useEffect(() => {
-        getProductById(itemId)
+
+        setLoading(true)
+
+        const docRef = doc(db, 'geneticas', itemId)
+
+        getDoc(docRef)
             .then(response => {
-                setProduct(response);
+                const data = response.data()
+                const geneticaElegida = { id: response.id, ...data}
+                setProduct(geneticaElegida)
             })
             .catch(error => {
                 console.error(error);
             })
-    }
-        , [itemId])
+            .finally(() => {
+                setLoading(false)
+            })
+    }, [itemId])
+    console.log(product)
 
-    return (
-        <div className="ItemDetailContainer">
-            <h1 className="tituloele">Genética</h1>
-            <ProfileCard {...product} />
-        </div>
-    )
+return (
+    <div className="ItemDetailContainer">
+        <h1 className="tituloele">Genética</h1>
+        <ProfileCard {...product} />
+    </div>
+)
 
 }
 

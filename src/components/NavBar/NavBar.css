@@ -30,5 +30,20 @@ nav {
 .links{
     display: flex; 
     flex-direction:column;
-    justify-content: end;
+    justify-content:flex-end;
 }
+
+.carrito{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-right: 30px;
+    font-size: x-large;
+}
+
+.pages{
+    margin-left: 100px;
+}
+
